@@ -1,0 +1,54 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+}
+
+main {
+    height: 40em;
+}
+
+strong {
+    color: black;
+}
+
+a {
+    color: #00B7FF;
+}
+
+hr {
+    width: 100%;
+    color: #8D8A8A;
+    height: 1px;
+    background-color: #8D8A8A;
+}
+
+.my-button{
+    white-space: normal;
+}
+
+
+#picture {
+     width: 5em;
+    height: 5em;
+}
+
+#btn1 {
+    white-space: normal;
+}
+
+#letrero {
+    height: 50px;
+}
+
+
+
+.check {
+width:30px;
+height:30px;
+ background-color: #2196F3;
+
+border: 3px solid #2B92DD;
+font-color: #00C4F4;
+color: #2B92DD;
+}

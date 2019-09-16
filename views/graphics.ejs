@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../views/head.ejs %>
+</head>
+
+<body class="container">
+    <%if ( iam == "root") { %>
+    <% include ../views/navAdmRoot.ejs %>
+    <% }else{ %>
+    <% include ../views/navAdm.ejs %>d
+    <% } %>
+    <main class="container">
+        <div class="row jumbotron myMain">
+            <div class="col-4">
+                <div class="row">
+                    <select type="email" id="inputSelect" class="form-group my-2 col-sm-8 mb-3" required autofocus>
+                        <option value="ALL">Select device(ALL)</option>
+                    </select>
+                    <button class="form-group btn btn-secondary my-2 col-sm-8 mb-3" type="button" id="btnNum1">
+                        <p>Today's registration</p>
+                    </button>
+                    <button class="form-group btn btn-secondary my-2 col-sm-8 mb-3" type="button" id="btnNum2">
+                        <p>Days of this week</p>
+                    </button>
+                    <button class="form-group btn btn-secondary my-2 col-sm-8 mb-3" type="button" id="btnNum3">
+                        <p>Weeks of this month</p>
+                    </button>
+                    <div class="form-group btn btn-secondary my-2 col-sm-8 mb-3">
+                        <input type="email" class="form-control" id="inputSeachUser" aria-describedby="emailHelp" placeholder="Name user" required>
+                        <button class="form-group btn btn-secondary" id="btnNum4">
+                            <p>Search user</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8" id="graphics"></div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.0/firebase.js"></script>
+    <script src="/javascripts/firebase.js"></script>
+    <script type="text/javascript" src="javascripts/graphics.js"></script>
+</body>
+</html>
