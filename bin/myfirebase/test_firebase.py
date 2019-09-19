@@ -14,60 +14,60 @@ from uuid import getnode as get_mac
 # Year, month, dat
 # inicio = datetime(2019, 6, 1)
 user = {
-    1: "user1",
-    2: "user2",
-    3: "user3",
-    4: "user4",
-    5: "user5",
-    6: "user6",
-    7: "user7",
-    8: "user8",
-    9: "user9",
-    10: "user10",
+    1: u"user1",
+    2: u"user2",
+    3: u"user3",
+    4: u"user4",
+    5: u"user5",
+    6: u"user6",
+    7: u"user7",
+    8: u"user8",
+    9: u"user9",
+    10: u"user10",
 }
 email = {
-    1: "user1@gmail.com",
-    2: "user2@gmail.com",
-    3: "user3@gmail.com",
-    4: "user4@gmail.com",
-    5: "user5@gmail.com",
-    6: "user6@gmail.com",
-    7: "user7@gmail.com",
-    8: "user8@gmail.com",
-    9: "user9@gmail.com",
-    10: "user10@gmail.com",
+    1: u"user1@gmail.com",
+    2: u"user2@gmail.com",
+    3: u"user3@gmail.com",
+    4: u"user4@gmail.com",
+    5: u"user5@gmail.com",
+    6: u"user6@gmail.com",
+    7: u"user7@gmail.com",
+    8: u"user8@gmail.com",
+    9: u"user9@gmail.com",
+    10: u"user10@gmail.com",
 }
 
 n_mac = {
-    1: "60E3270178FB",
-    2: "70E3450178FB",
-    3: "80E3350178FB",
+    1: u"60E3270178FB",
+    2: u"70E3450178FB",
+    3: u"80E3350178FB",
 }
 lastName = {
-    1: "Pérez",
-    2: "González",
-    3: "Dorta",
-    4: "Lemus",
+    1: u'Pérez',
+    2: u"González",
+    3: u"Dorta",
+    4: u"Lemus",
 }
 
 work = {
-    1: "Gerencia",
-    2: "Administración",
-    3: "Cocina",
-    4: "Auxiliar Gerencia",
+    1: u"Gerencia",
+    2: u"Administración",
+    3: u"Cocina",
+    4: u"Auxiliar Gerencia",
 }
 
 info = {
-    1: "Eficiente",
-    2: "Sale temprano los viernes",
-    3: "Trabaja de noche",
-    4: "Esta de Vacaciones",
+    1: u"Eficiente",
+    2: u"Sale temprano los viernes",
+    3: u"Trabaja de noche",
+    4: u"Esta de Vacaciones",
 }
 
 r_mac = {
-    1:{u"name": u"Device 1",u"mac": u"60E3270178FB"},
-    2:{u"name": u"Puerta 2",u"mac": u"70E3450178FB"},
-    3:{u"name": u"Puerta 5", u"mac": u"80E3350178FB"}
+    1: {u"name": u"Device 1", u"mac": u"60E3270178FB"},
+    2: {u"name": u"Puerta 2", u"mac": u"70E3450178FB"},
+    3: {u"name": u"Puerta 5", u"mac": u"80E3350178FB"}
 }
 
 
@@ -104,14 +104,16 @@ class TestFirebase:
             fn = user.get(op_user)
             ln = lastName.get(random.randint(1, 4))
             wp = work.get(random.randint(1, 4))
-            otI = info.get(random.randint(1, 4))
-
+            ot_i = info.get(random.randint(1, 4))
+            B827EB67E372 = { u'finger0': u'vwscXxxHKmmMKUnDUBL+XR6mKJ0qPls2BI/JrhIYjLYKXykyqlgiOyF+8uXowZ26EmBlK4tlcxZx0Vrf4WZfJppAVIhJdjlR0RQeSWapUOJZnSDBPKzBZpLtSfyv4eh508+T/BV09LlJE2lBmljphG/uzzlu7BId6yqoJ+3KBgdu0LJBRPvFD8kSxL38YCIVGZuV6wU4tZVPzgishp46q6a1EA2vLXXLCe/k+ZtsQ97CoTsHWeYTveFS7H8g1YrObC7g6eMmHy92CR5ARVIxw4LyFpZdWZLmOEI5YCvwCFF20Bpg0ZGpdFKAVn+8LClviyU7uGmIP048PAT8LJ7329XZmRJEjDUmzoZmjqoo1L5LaWFd2QWdw0+QFAkc4GZHCn0igMudxjzIdZQOkdQFJ/YatSFwjlUjb66P/mZfY1uIF6QjNIL+smLA4Oudq7xcBpU4D2WQuEobyYdp/fRridVsdMJmoNC7JWi508Q5Wz0qRvEW9Gn2hm+EAfM1LPXumAgN7b4QO2lg/QZOZmgi+1APLAfHzxxmeto/UHJyKjGD0zMx0BZdticsCabPNQEhWGDpoI/nQHxctzLHRf3kCZ3SWL9+me/LrrZyEjiLz9Ul17fq+V/jhrIxjdzHtZeznH5pHVXrtocDcYfhSICIHLoerqH4X74pXVY7JO2HCDsdFRDwk95/W+AO+L2XrrKUbBLMxe0DYecmlx1kkFRKTjPwzyOOagUHNjgAy+tQhto2eMAE5oRfkukjmJqWnDI2mjkVDYyG1r/TP/qits1Os3GKbbNVLWEYmM5S+Ad6PhGkkW98UGI+ia254aGgJCqYOV2JAvbBJcT+bgT4a5dhQmcW2QkutUfpQVGESaO/fBDQsKY6vCYYvt3VpAddDs6NvEPGH2wcAhaad6FUrMub8BOQfqSdwILC3R+mQNg3f3ws1GI0papYbteIe3LCZCk8s5ks9JW2fAl4TthLheE8S2GJbxNyKgFTY/QJd3vzGNa9Nx8wlKoRBmC0MNO2OITYFuT6hVMlM9TcdFLxnq70Gyymfyxbmhz0o2n3QRXfq2wncCUPxN2ARSRq3lTL6zC7N1endxlF1g8T/4SGJuA9qLICRjfFIk6l/yTjRwqRz7bLqTz+jWAv8cMORFBzcs4+QqHoPdJ6KM0HLzhP1CRIw2IlCRqCKerSsJOT50J1oqUwqF4EK99/s9k42HMAXDHRssC5Y+HUp2CLtTWQo7Ssum2kI/u1rN6HdQivtAgWoA8='} 
+            B827EB67E372 = { u'B827EB67E372': B827EB67E372 }
             up_data = {
                 u'emailId': em,
                 u'firstName': fn,
                 u'lastName': ln,
                 u'workPosition': wp,
-                u'otherInfo': otI
+                u'otherInfo': ot_i,
+                u'm_div': B827EB67E372
             }
             self.__db.upload_testUser(up_data)
 
@@ -169,7 +171,10 @@ class TestFirebase:
         n_m = n_mac.get(random.randint(1, 3))
         h = random.randint(0, 23)
         m = random.randint(0, 59)
+
         date = date.replace(hour=h, minute=m)
+        jj=date.strftime('%b')
+        print(jj)
         up_data = {
             u'timeStamps': time.mktime(date.timetuple()),
             u'day': int(date.strftime('%d')),
@@ -181,6 +186,7 @@ class TestFirebase:
             u'minute': int(date.strftime('%M')),
             u'mac': n_m
         }
+        print(up_data)
         op = random.randint(1, 10)
         up_data[u'emailId'] = email.get(op)
         up_data[u'firstName'] = user.get(op)
@@ -269,13 +275,13 @@ class TestFirebase:
 
 
 if __name__ == '__main__':
-    aux = TestFirebase(100, 30, 10)
-    date = datetime(2019, 6, 27)
-    #aux.register_this_date(5,date)
+    # aux = TestFirebase(100, 30, 10)
+    aux = TestFirebase(100, 40, 10)
+    date = datetime(2019, 9, 18)
+    # aux.register_this_date(10,date)
     # print(aux.next_week_of_mouth(date))
-    aux.register_new_user(20)
-    aux.register_divice()
+    # aux.register_new_user(20)
+    # aux.register_divice()
     aux.run()
-
     # print(aux.getCont())
     # print(aux._start_of_this_week())

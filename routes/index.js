@@ -46,16 +46,15 @@ admin.initializeApp({
     databaseURL: 'https://tfg-findegrado.firebaseio.com'
 });
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/?', function(req, res, next) {
     let url = req.headers.referer;
     var ip_a = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    
-
     let page = takePageName(url);
     if((page == "getIn")||(page == "newUser") ){
       closeSistem();
     }
     if((ip_a.split(":")[3] ==  ip.address())||(ip_a.split(":")[2] == "1")){
+        closeSistem();
         res.render('index', { title: 'Secure Access Control', out:false });
     }else{
        res.render('index', { title: 'Secure Access Control', out:true });
@@ -396,46 +395,6 @@ router.get('/getIn', function(req, res, next) {
         pyshell = null;
     }
 });
-/* Save footprint and GET menuAdm page.
-router.post('/saveFootprint', function(req, res, next) {
-    let path_file = __dirname
-    path_file = path.join(path_file, "./..")
-    path_file = path.join(path_file, "bin")
-    path_file = path.join(path_file, 'mainSaveFootprint.py')
-    console.log(req.cookies)
-
-    //res.send({})
-    var PythonShell = require('python-shell');
-    pyshell = new PythonShell('sudo python ./../bin/mainSaveFootprint.py', { args: [req.cookies.newUser] });
-    pyshell.on('message', function(message) {
-        // received a message sent from the Python script (a simple "print" statement)
-        console.log(message);
-    });
-
-    // end the input stream and allow the process to exit
-    pyshell.end(function(err, code, signal) {
-        /// if (err) throw err;
-        console.log('The exit err: ' + err);
-        console.log('The exit code was: ' + code);
-        console.log('The exit signal was: ' + signal);
-        //console.log('The opcion: ' + opcion);
-        console.log('finished');
-        var message = "";
-        switch (code) {
-            case 1:
-                message = "The fingerprint sensor could not be initialized";
-                break;
-            case 2:
-                message = "Match found!!! Impossible to save. Are you already registered";
-                break;
-            default:
-                message = "All right!!!";
-                break;
-        }
-        res.send({ "code": code, "message": message });
-    });
-    pyshell = null;
-});*/
 
 // Post
 router.post('/deleteSelect', function(req, res, next) {
@@ -497,7 +456,7 @@ async function deleteFiles(rest) {
                 //console.log("Borro")
             });
         }
-    } catch {
+    }catch(e){
         console.log("Not clear")
     }
 
@@ -555,9 +514,8 @@ async function ord(path_dir_tmp, path_dir_save, callback) {
             callback()
 
         })
-    } catch {
+    } catch(err) {
         console.log(err)
-
     }
 
     function copy() {
@@ -593,21 +551,6 @@ router.post('/take_photos', function(req, res, next) {
                 console.log(errr)
 
             })
-
-        } else {
-            // for (const file of files) {
-            //     let delelete_new = path.join(path_dir_tmp, file)
-            //     fs.unlink(delelete_new, (err) => {
-            //         if (err) throw err;
-            //         console.log("Borro")
-            //     });
-            // }
-            // take_photos(20, cont, path_file_face, path_dir_tmp, function(errr) {
-            //     if (errr) throw errr;
-
-            // })
-            // res.send({ "photos": " files" });
-            
 
         }
         res.send({ message: "Take Photos Correct" })
@@ -669,7 +612,7 @@ router.post('/confir_photos', function(req, res, next) {
             //console.log(err)
         })
         res.send({ code: "0", message: "All right!!!" });
-    } catch {
+    } catch(e) {
         res.send({ code: "1", message: "Save Error!!!" });
     }
 });

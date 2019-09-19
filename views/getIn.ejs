@@ -2,92 +2,51 @@
 <html lang="en">
 
 <head>
-    <title>
-        <%= title %>
-    </title>
-    <% include ../views/head.ejs %>
-    <!-- Custom styles for this template -->
-    <link href="/stylesheets/style.css" rel="stylesheet">
-    <link href="/stylesheets/video.css" rel="stylesheet">
+  <title>
+    <%= title %>
+  </title>
+  <% include ../views/head.ejs %>
+  <!-- Custom styles for this template -->
+  <link href="/stylesheets/style.css" rel="stylesheet">
+  <link href="/stylesheets/video.css" rel="stylesheet">
 </head>
 
 <body class="container">
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">
-            <%= title %></a>
-        <form action="/" method="GET">
-            <button type="submit" class="btn btn-outline-light" id="btnClose">
-                <span class="iconify" data-icon="octicon-sign-out" data-inline="false"></span>
-            </button>
-            <form>
-    </nav>
-    <main>
-        <section class="jumbotron text-center">
-            <div class="row mb-3">
-                <div class="col-sm-10"></div>
-                <div id="divCheckFRed" class="col-sm-1 button-red"></div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-sm-2"></div>
-                <img class="col-sm-8" id="canvas" src="video.jpg" width="640" height="480"  alt="No se puede reproducir el vi"></img>
-                <div class="col-sm-2">
-                </div>
-            </div>
-            <div id="letrero" class="row mb-3">
-                <p id="pCheckFText" class="col-sm-12"></p>
-            </div>
-        </section>
-    </main>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <!--script src="/javascripts/getIna.js"></script-->
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-    let btnPass = document.getElementById('divCheckFRed')
-    //var socket = io('http://localhost:3000/video',{ reconnection: false });
-    //var socket = io('http://192.168.1.50:3000/video', { reconnection: true });
-    //var socket = io('http://192.168.1.42:3000/video', { reconnection: false });
-    //var ctx = document.getElementById('canvas').getContext('2d');
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">
+      <%= title %></a>
+    <form action="/" method="GET">
+      <button type="submit" class="btn btn-outline-light" id="btnClose">
+        <span class="iconify" data-icon="octicon-sign-out" data-inline="false"></span>
+      </button>
+      <form>
+  </nav>
+  <main>
+    <section class="jumbotron text-center">
+      <div class="row mb-3">
+        <div class="col-sm-10"></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-2"></div>
+        <img class="col-sm-8" id="canvas" src="video.jpg" width="640" height="480" alt="No se puede reproducir el vi"></img>
+        <div class="col-sm-2">
+        </div>
+      </div>
+      <div id="letrero" class="row mb-3">
+        <p id="pCheckFText" class="col-sm-12"></p>
+      </div>
+    </section>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script>
+  setTimeout(function videoOn() {
+    let img = document.getElementById('canvas');
+    img.src = 'http://localhost:8000/stream.mjpg'
+  }, 10000)
 
-    /*function videoOn() {
-        socket.emit("image", { image: "ok" })
-        //console.log("emite coñoñoo")
-    }*/
-
-
-    //setInterval(() => { videoOn() }, 125);
-    //setTimeout(videoOn,10,"ok"+ "?" + Math.random())
-   /* socket.on("new_image", function(info) {
-        let img = new Image();
-        if (info.image) {
-            if (info.recognizer == true) {
-                btnPass.style.borderColor = "green";
-                btnPass.style.backgroundColor = "green";
-                setTimeout("drawRed()", 5000)
-            }
-            //img.src = 'data:image/jpeg;base64,' +  info.buffer ;
-            img.src = 'data:image/webp;base64,' + info.buffer;
-            img.onload = function() {
-                img.clientWidth = ctx.clientWidth;
-                img.clientHeight = ctx.clientHeight;
-                ctx.drawImage(img, 0, 0, 640, 480);
-                img = null
-                
-            }
-            
-        }
-      
-    });*/
-  setTimeout(  function videoOn() {
-        let img = document.getElementById('canvas');
-        img.src = 'http://localhost:8000/stream.mjpg'
-    },10000)
-    function drawRed() {
-        btnPass.style.borderColor = "red";
-        btnPass.style.backgroundColor = "red";
-    }
-    </script>
+  </script>
 </body>
 
 </html>

@@ -75,7 +75,8 @@ class MyFirebase:
 
     def __init__(self):
         path = os.path.join(PATH_DIR, 'serviceAccountKey.json')
-        #path = os.path.join(PATH_DIR, 'doskey.json')
+        # path = os.path.join(PATH_DIR, 'doskey.json')
+        # path = os.path.join(PATH_DIR, 'proyPruebaKey.json')
         file = open(path, 'r')
         try:
             self.app = firebase_admin.get_app()
@@ -89,10 +90,10 @@ class MyFirebase:
                 "storageBucket": "tfg-findegrado.appspot.com",
                 "databaseURL": "https://tfg-findegrado.firebaseio.com"
             })
-            #self.db_admin = admin.initialize_app(self.cred, {
+            # self.db_admin = admin.initialize_app(self.cred, {
             #    "storageBucket": "dosjoder-46c0a.appspot.com",
             #    "databaseURL": "https://dosjoder-46c0a.firebaseio.com"
-            #})
+            # })
             self.db_fire = firestore.client()
 
     def vect_charasteristics_doc(self, nameFile):
